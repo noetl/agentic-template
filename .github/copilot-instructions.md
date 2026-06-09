@@ -21,6 +21,7 @@ Read the modular rule files in `agents/rules/` for detailed guidance on:
 - Submodule handling (`submodules.md`)
 - Handoffs (`handoffs.md`)
 - Issue tracking (`issue-tracking.md`)
+- External memory systems (`external-memory-systems.md`)
 - Writing style (`writing-style.md`)
 
 ## Behavioral profile
@@ -32,6 +33,8 @@ Read `agents/profiles/claude.md` or `agents/profiles/codex.md` for the appropria
 - Add entries: `./scripts/memory_add.sh "<title>" "<summary>" "<tags>"`
 - Compact: `./scripts/memory_compact.sh`
 - Current state: `memory/current.md`
+- Keep linked GitHub/Jira issue state current for active tasks
+- Keep linked GitHub Wiki/Confluence pages current for changed public surfaces
 
 ## Commit conventions
 

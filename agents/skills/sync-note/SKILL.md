@@ -19,6 +19,8 @@ Create a new sync note under `sync/issues/` from the standard template.
    - Which repos were involved
    - PR links (if any)
    - Resulting SHAs
+   - GitHub issue and/or Jira ticket links
+   - GitHub Wiki and/or Confluence links
    - Follow-up actions
 3. Create the file at:
    ```

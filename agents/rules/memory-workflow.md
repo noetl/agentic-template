@@ -31,3 +31,21 @@ globs:
 - Use the `## Related` section to cross-reference sync notes and other entries.
 - Keep this meta-repo memory focused on cross-repo coordination and platform-level decisions.
 - Store project-specific implementation memory inside the owning submodule when possible.
+
+## External memory synchronization
+
+Use `agents/rules/external-memory-systems.md` as companion guidance.
+
+For substantive work, keep these synchronized in the same session:
+
+- Local memory (`memory/`)
+- Local coordination notes (`sync/issues/`)
+- Work tracker (`GitHub Issues` and/or `Jira`)
+- Documentation memory (`GitHub Wiki` and/or `Confluence`) when public surfaces changed
+
+Suggested `## Related` entries include:
+
+- GitHub issue URL
+- Jira ticket key/URL
+- Wiki/confluence page URL
+- submodule PR URL

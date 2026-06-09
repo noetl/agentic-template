@@ -13,6 +13,14 @@
 - <repo-b>: <PR link(s)>
 - <repo-c>: <PR link(s)>
 
+## External Tracker Links
+- GitHub issue(s): <repo#number or URL>
+- Jira ticket(s): <KEY-123 or URL>
+
+## Documentation Memory Links
+- GitHub Wiki page(s): <URL>
+- Confluence page(s): <URL>
+
 ## Resulting SHAs / Tags
 - repos/<repo-a>: <sha or tag>
 - repos/<repo-b>: <sha or tag>

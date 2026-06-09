@@ -3,9 +3,13 @@
 Read these files at session start (in order):
 
 1. `AGENTS.md` — mandatory rules for this repo
-2. `memory/current.md` — active working state
-3. Latest entries in `memory/inbox/` — recent uncompacted work
-4. `sync/issues/` — in-flight cross-repo tracking
+2. `agents/rules/execution-model.md` — architecture and boundary guardrails
+3. `memory/current.md` — active working state
+4. Latest entries in `memory/inbox/` — recent uncompacted work
+5. Open tracked work items (`GitHub Issues` and/or `Jira`) for durable task state
+6. `sync/issues/` — in-flight cross-repo tracking
+7. `handoffs/active/` — in-flight handoff rounds
+8. Linked wiki/doc surfaces (`GitHub Wiki` and/or `Confluence`) for impacted modules
 
 ## Project structure
 
@@ -38,6 +42,19 @@ repos/                           # Git submodules (the actual codebases)
 - `/handoff-result "<slug>"` — scaffold the matching handoff result file
 - `/issue-open "\"<title>\" <repo>"` — open tracked long-running issue
 - `/issue-close "<number>"` — close tracked issue with landing citations
+
+## Daily operating checks
+
+At the start of work:
+
+- Verify local memory and open tasks are aligned.
+- Verify impacted wiki/confluence pages are identified.
+
+Before pointer bumps:
+
+- Confirm merged PR range.
+- Confirm tracked issue/ticket updates.
+- Confirm wiki/confluence updates for changed public surfaces.
 
 ## Quick commands (manual)
 

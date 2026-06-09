@@ -22,6 +22,11 @@ git submodule status --recursive
 
 Expected: clean meta-repo and pinned submodule SHAs.
 
+Then sync external memory view:
+
+- Review open GitHub issues and/or Jira tickets for active work.
+- Open linked GitHub Wiki and/or Confluence pages for touched surfaces.
+
 ## 2) Pick work and create a trace
 
 Before code changes, create a memory entry:
@@ -40,6 +45,8 @@ Capture:
 - target repos
 - planned branch names
 - rollout/validation plan
+- external tracker links (GitHub issue URL and/or Jira key)
+- docs memory links (GitHub Wiki page and/or Confluence page)
 
 ## 3) Implement changes in submodules
 
@@ -74,6 +81,8 @@ Then append a short sync note in `sync/` or `sync/issues/` with:
 - merged PR links
 - final submodule SHAs
 - follow-up actions
+- tracker status updates (GitHub/Jira)
+- docs update links (Wiki/Confluence)
 
 ## 5) End of day
 
@@ -101,3 +110,4 @@ git push
 - Do not commit product source code directly to this meta-repo.
 - Commit only instructions, playbooks, sync notes, memory, and submodule SHA bumps.
 - Keep changes atomic: one coordination concern per commit when possible.
+- Keep local memory, issues/tickets, and docs pages synchronized for substantive changes.

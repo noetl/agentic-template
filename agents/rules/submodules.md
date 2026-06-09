@@ -25,6 +25,12 @@ globs:
   ```
 - Always verify the diff before committing pointer updates.
 
+Before committing a pointer bump for substantive changes, verify:
+
+- Linked issue/ticket has a status update (`GitHub` and/or `Jira`).
+- Linked docs memory (`GitHub Wiki` and/or `Confluence`) reflects changed public surfaces.
+- A sync note exists or is updated under `sync/issues/` for cross-repo changes.
+
 ## Adding new submodules
 
 - Add with: `git submodule add <remote-url> repos/<name>`

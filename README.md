@@ -2,18 +2,35 @@
 
 Coordination repository and shared memory layer for the **{{PROJECT_NAME}}** ecosystem.
 
-This repo tracks all participating repositories as **git submodules**, provides a **Git-tracked long memory** system for AI agents and engineers, and defines shared **rules, skills, and profiles** that any AI coding agent can use.
+This repo tracks participating repositories as git submodules, keeps durable AI memory in Git, and provides shared rules, skills, and profiles for multiple coding agents.
 
-It also includes a **file-based cross-agent handoff system** so long-running work can move between Claude, Copilot/Codex, Cursor, Gemini, and future tools without losing context.
+It also includes a file-based cross-agent handoff protocol so long-running work can move between Claude, Copilot/Codex, Cursor, Gemini, and future tools without losing context.
 
-## Quick Start
+## Bootstrap a New Agentic-Memory Repo
+
+Use this template, then run the included initializer once to replace all placeholders and set up symlinks.
 
 ```bash
-# Clone
+# 1) Clone your new meta repository created from this template
 git clone {{REPO_PREFIX}}/{{PROJECT_SLUG}}-meta.git
 cd {{PROJECT_SLUG}}-meta
 
-# Initialize submodules
+# 2) Run initializer (interactive)
+bash ./init.sh
+```
+
+What `init.sh` does:
+
+- Replaces `{{PROJECT_NAME}}`, `{{PROJECT_SLUG}}`, `{{ORG_NAME}}`, and `{{REPO_PREFIX}}` across text files.
+- Creates `.claude/rules` and `.claude/skills` symlinks to `agents/`.
+- Marks memory scripts executable.
+- Initializes git (if needed), creates an initial commit, and optionally sets `origin`.
+- Removes `init.sh` after successful setup.
+
+After initialization, use standard update flow:
+
+```bash
+git submodule sync --recursive
 git submodule update --init --recursive
 ```
 
@@ -26,6 +43,21 @@ git submodule update --init --recursive
 - **`playbooks/`** — repeatable checklists for common tasks
 - **`handoffs/`** — durable cross-agent prompt/result threads
 - **`scripts/`** — automation helpers (memory_add.sh, memory_compact.sh)
+
+## Memory Layers
+
+This template uses layered memory, where Git remains durable source of truth for agent operations:
+
+1. **Local repository memory (required)**
+	- `memory/current.md`, `memory/inbox/`, `memory/compactions/`, `memory/timeline.md`
+2. **Work-item memory (recommended)**
+	- GitHub Issues and optionally Jira for durable task state, blockers, and acceptance criteria
+3. **Knowledge memory (recommended)**
+	- GitHub Wiki and/or Confluence for durable architecture, runbooks, and policy pages
+4. **Coordination memory (recommended)**
+	- `sync/issues/` notes that link submodule PRs, SHAs, and external ticket/wiki IDs
+
+See `agents/rules/external-memory-systems.md` for strict operating rules.
 
 ## Repository Layout
 
@@ -66,6 +98,7 @@ git submodule update --init --recursive
 4. **Write sync notes** — capture what changed across repos
 5. **Add memory entries** — record decisions and outcomes
 6. **Compact periodically** — keep active memory small
+7. **Keep external memory in sync** — update linked issues/tickets/wiki pages when state changes
 
 ## Cross-Agent Handoff Workflow
 
@@ -94,6 +127,23 @@ See `handoffs/README.md` and `agents/rules/handoffs.md`.
 - `memory(curate): <scope>` — manual current.md refresh
 - `chore(sync): bump <repo> to <sha>` — submodule pointer update
 - `docs(agents): <description>` — agent infrastructure changes
+
+## Extended Memory Storage (Jira, GitHub, Confluence)
+
+This template supports using external systems as memory extensions:
+
+- **GitHub Issues**: durable task lifecycle, acceptance criteria, blocker tracking
+- **Jira**: program-level planning, sprint ownership, status and dependencies
+- **GitHub Wiki**: engineering reference tied closely to repository surfaces
+- **Confluence**: higher-level architecture and operational documentation
+
+Recommended linking pattern for every substantive cross-repo task:
+
+- One issue/ticket ID (`GH-123` or `PROJ-123`)
+- One or more submodule PR links
+- One memory entry in `memory/inbox/`
+- One sync note in `sync/issues/`
+- Zero or more wiki/confluence pages
 
 ## Adding Submodules
 
