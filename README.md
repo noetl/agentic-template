@@ -54,6 +54,18 @@ This template uses layered memory, where Git remains the durable source of truth
 
 See `agents/rules/external-memory-systems.md` for extension patterns.
 
+## Agent Rule Families
+
+The template includes shared rules for:
+
+- execution-model boundaries and platform data access
+- explicit credential/auth references
+- observability, logging, and local validation
+- linked-repository pointer hygiene
+- issue/ticket, roadmap-board, and wiki synchronization
+- file-based handoffs and agent-routing decisions
+- writing style and public-repo safety
+
 ## Repository Layout
 
 ```
@@ -62,6 +74,7 @@ See `agents/rules/external-memory-systems.md` for extension patterns.
 ├── .github/copilot-instructions.md    # GitHub Copilot entry point
 ├── .cursorrules                       # Cursor entry point
 ├── agents/                            # Shared agent infrastructure
+│   ├── README.md                      #   Agent mapping and adapter explanation
 │   ├── rules/                         #   Modular rule files
 │   ├── skills/                        #   Workflow definitions
 │   └── profiles/                      #   Per-agent behavioral profiles
@@ -159,6 +172,8 @@ This repo supports multiple AI coding agents out of the box:
 | Cursor | `.cursorrules` | Instructions |
 | Gemini | `GEMINI.md` (optional) | Profile + rules |
 | Any other | `AGENTS.md` | Read manually |
+
+See `agents/README.md` for the current adapter/source-of-truth mapping.
 
 ---
 

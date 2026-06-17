@@ -9,6 +9,10 @@ Supported documentation systems:
 
 Choose one as the primary home for each module/surface to avoid duplication drift.
 
+When this template is specialized for a project with multiple wikis, record the
+wiki registry and ownership split in this file or a linked project-specific
+rule. The operating rule remains the same: docs move with the work.
+
 ## Rule 1: first touch coverage
 
 If a module has no dedicated docs page and you introduce substantive behavior, create that page before merge.

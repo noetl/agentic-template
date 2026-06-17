@@ -14,5 +14,6 @@ For containerized/runtime-impacting changes, validate locally before shared envi
 
 - Documentation-only changes.
 - Non-runtime metadata updates.
+- Pointer updates for changes that have already passed validation in the owning repository.
 
 When unsure, run local validation.

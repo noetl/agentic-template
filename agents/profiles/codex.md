@@ -30,3 +30,7 @@ Code edits, refactors, test-driven changes, repo navigation, PR branch preparati
 - `memory-compact` — compact inbox entries into a summary
 - `sync-note` — create a sync note from the template
 - `bump-pointer` — update a linked-repo pointer after upstream merge
+- `handoff-open` — open a cross-agent handoff thread
+- `handoff-result` — scaffold a cross-agent handoff result
+- `issue-open` — open a tracked issue for long-running work
+- `issue-close` — close a tracked issue with landing citations

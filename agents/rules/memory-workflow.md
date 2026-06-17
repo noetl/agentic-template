@@ -9,6 +9,7 @@ globs:
 ## Adding entries
 
 - Use `./scripts/memory_add.sh "<title>" "<summary>" "<tags>"` to create entries.
+- Each entry gets a unique timestamped filename.
 - One topic per entry.
 - Keep entries factual and actionable.
 - Commit with `memory(add): <topic>`.

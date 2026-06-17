@@ -7,3 +7,7 @@ Only the following may be committed to this repo:
 - Pointer updates, repository-link updates, or source changes when this repo intentionally owns that source
 - AI memory entries and compactions (memory/)
 - Cross-agent handoff threads and templates (handoffs/)
+
+Project-specific implementation memory belongs in the owning source tree when
+this repository is only coordinating the work. Record only shared decisions,
+pointer state, deployment state, and cross-repo coordination here.

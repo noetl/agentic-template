@@ -28,6 +28,7 @@ globs:
 Before committing a pointer bump for substantive changes, verify:
 
 - Linked issue/ticket has a status update (`GitHub` and/or `Jira`).
+- Linked roadmap board state is current when your project uses boards.
 - Linked docs memory (`GitHub Wiki` and/or `Confluence`) reflects changed public surfaces.
 - A sync note exists or is updated under `sync/issues/` for cross-project changes.
 

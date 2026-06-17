@@ -2,17 +2,20 @@
 
 This is the coordination repository for the **{{PROJECT_NAME}}** project template.
 
-## Mandatory rules
+## Required reading
 
-Read and follow `AGENTS.md` at the repository root. Key constraints:
+Read these files at session start:
 
-- This repo is public — never store secrets, tokens, or credentials.
-- Do not commit product code unless this template has been intentionally forked into an active project.
-- Never rewrite history on `main`.
+1. `AGENTS.md` — mandatory rules
+2. `agents/README.md` — agent mapping and shared source-of-truth layout
+3. `agents/rules/execution-model.md` — foundational architecture boundary
+4. `memory/current.md` — active working state
+5. `agents/profiles/` — your working profile
+6. `agents/rules/` — all rule files
 
-## Detailed rules
+## Rules
 
-Read the modular rule files in `agents/rules/` for detailed guidance on:
+Read and follow all files in `agents/rules/`, especially:
 
 - Safety (`safety.md`)
 - Allowed content (`allowed-content.md`)
@@ -21,25 +24,25 @@ Read the modular rule files in `agents/rules/` for detailed guidance on:
 - Repository/link handling (`submodules.md`)
 - Handoffs (`handoffs.md`)
 - Issue tracking (`issue-tracking.md`)
+- Roadmap boards (`roadmap-boards.md`) when your project uses boards
+- Wiki maintenance (`wiki-maintenance.md`) when your project uses wiki/docs memory
 - Writing style (`writing-style.md`)
 
-## Behavioral profile
+## Skills
 
-Read `agents/profiles/claude.md` or `agents/profiles/codex.md` for the appropriate agent profile.
+Read the `SKILL.md` in each directory under `agents/skills/`:
 
-## Memory workflow
+- `agents/skills/memory-add/`
+- `agents/skills/memory-compact/`
+- `agents/skills/sync-note/`
+- `agents/skills/bump-pointer/`
+- `agents/skills/handoff-open/`
+- `agents/skills/handoff-result/`
+- `agents/skills/issue-open/`
+- `agents/skills/issue-close/`
+
+## Key commands
 
 - Add entries: `./scripts/memory_add.sh "<title>" "<summary>" "<tags>"`
 - Compact: `./scripts/memory_compact.sh`
 - Current state: `memory/current.md`
-
-## Commit conventions
-
-- `memory(add): <topic>`
-- `memory(compact): <scope>`
-- `memory(curate): <scope>`
-- `chore(sync): bump <repo> to <short-sha>`
-- `docs(agents): <description>`
-- `handoff(open): <slug>`
-- `handoff(result): <slug> round NN`
-- `handoff(close): <slug>`

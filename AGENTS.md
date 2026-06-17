@@ -1,15 +1,10 @@
 # {{PROJECT_NAME}} AI Instructions
 
-## Repo purpose
+This file defines mandatory behavior for AI agents operating in this repository.
 
-This repository is the coordination layer and shared memory for the {{PROJECT_NAME}} project. It can support a monorepo, linked repositories, or a forked starter workflow. It contains:
+## Scope
 
-- Optional linked repos or subprojects under `repos/`
-- A Git-tracked **memory system** under `memory/`
-- **Sync notes** under `sync/`
-- **Playbooks** under `playbooks/`
-- **Agent infrastructure** under `agents/`
-- **Cross-agent handoffs** under `handoffs/`
+- Applies to the entire `{{PROJECT_NAME}}` coordination repository.
 
 ## Mission
 
@@ -17,51 +12,55 @@ This repository is the coordination layer and shared memory for the {{PROJECT_NA
 - Keep shared instructions, skills, and rules consistent.
 - Maintain reproducible references for linked repos, releases, or other external dependencies.
 
-## Foundational execution model
+## Foundational execution model — read first
 
-Before proposing architecture or workflow changes, verify this boundary:
+Before designing any feature, integration, deployment change, or operational
+fix, measure the proposal against the execution-model boundary:
+**gateway = gatekeeper, worker = atomic compute, workflow/playbook =
+ephemeral blueprint, shared cache/state = explicit state vehicle, event log =
+source of truth.**
 
-- Gateway/service edge handles auth, routing, and protocol concerns.
-- Workers execute atomic compute units.
-- Workflow/playbook definitions remain declarative and replayable.
-- Shared state transport is explicit and reconstructable.
-- Event/history log remains append-only source of truth.
+- Behavioral rule for AI agents: `agents/rules/execution-model.md`.
+- Optional full architecture docs belong in the owning project docs surface.
 
-If a proposal moves business data touches into a gateway/client layer or introduces hidden long-lived runtime state without replay semantics, redesign before implementation.
-
-## Safety rules
-
-- This repository is public. Never store secrets, tokens, credentials, or sensitive values.
-- Keep product code in the project source tree that owns it. That may be this repo only when it has been intentionally forked into an active working project.
-- Never rewrite history on `main`.
-- Memory updates must be append-only through Git history.
+If a proposal moves business data touches into a gateway/client layer, holds
+process state across external waits, or introduces hidden long-lived runtime
+state without replay semantics, reshape the proposal before implementation.
 
 ## Hard rules
 
 1. This repository is public. Never store secrets or sensitive values.
 2. Keep product code in its owning source tree; this repo may own code only when intentionally used as an active project repo.
-3. Use this repo for orchestration docs, AI instructions, memory, handoffs, sync notes, and coordination updates.
+3. Allowed content:
+   - AI instruction files
+   - orchestration docs and checklists
+   - linked-repo pointer updates or deterministic source references
+   - AI memory entries and compactions
+   - cross-agent handoff threads (`handoffs/active/`, `handoffs/archive/`)
 4. Keep memory updates append-only through Git history.
 5. Keep pointer updates minimal and deterministic.
 6. Never rewrite history on `main`.
-7. Do not edit previous handoff rounds; append new rounds only.
+7. Cross-agent handoffs are append-only: never edit a prior round's prompt or result; open a new round instead.
 8. For substantive changes, update issue/ticket state and docs/wiki state in the same change set when those systems are in use.
 
-## Allowed content
+## Memory ownership
 
-Only the following may be committed to this repo:
-
-- AI instruction files (CLAUDE.md, AGENTS.md, .claude/, agents/)
-- Orchestration docs and checklists (playbooks/, sync/)
-- Pointer updates, repository-link updates, or source changes when this repo intentionally owns that source
-- AI memory entries and compactions (memory/)
-- Handoff prompt/result files (handoffs/active/, handoffs/archive/, handoffs/templates/)
+- Keep `memory/` focused on durable project decisions, coordination state,
+  linked-repository pointer state, deployment state, and cross-repo outcomes.
+- Keep product-specific implementation notes in the owning source tree when
+  this repo is only acting as a coordination layer.
+- If a downstream project requires a platform or template change, record the
+  downstream context in that project's memory and record only the shared
+  platform/template decision here.
 
 ## Repository workflow
 
 - Make code changes in the repository or project area that owns the code.
 - Open PRs and merge in the upstream repository or main branch you actually use.
 - After merge, update any pointer, link, or reference in this repo if your workflow tracks that state here.
+- For linked repositories, run from the repository root and use:
+  - `git submodule sync --recursive`
+  - `git submodule update --init --recursive`
 
 ## Commit conventions
 
@@ -71,6 +70,7 @@ Only the following may be committed to this repo:
 - `chore(sync): bump <repo> to <short-sha>` — linked-repo or pointer update
 - `docs(agents): <description>` — instruction/agent doc changes
 - `handoff(open): <slug>` — open handoff thread
+- `handoff(prompt): <slug> round NN` — follow-up handoff prompt
 - `handoff(result): <slug> round NN` — publish handoff result
 - `handoff(close): <slug>` — archive completed thread
 
@@ -97,6 +97,7 @@ Operational rule: when a substantive task progresses, update local memory and th
 All agents must:
 
 - Read `AGENTS.md` at session start
+- Read `agents/README.md` for the shared source-of-truth layout
 - Read `memory/current.md` for active working state
 - Follow commit conventions above
 - Never store secrets or credentials
@@ -106,7 +107,7 @@ All agents must:
 
 Detailed modular rules are in `agents/rules/`. Behavioral profiles are in `agents/profiles/`.
 
-## Handoff convention
+## Cross-agent handoffs
 
 When work spans sessions or tools:
 
@@ -117,3 +118,17 @@ When work spans sessions or tools:
 5. Move completed thread to `handoffs/archive/<slug>/`
 
 See `handoffs/README.md` and `agents/rules/handoffs.md`.
+
+## Validation before merge
+
+- Changed pointers map to merged commits in upstream repos.
+- Instruction docs remain internally consistent.
+- Runtime-impacting changes have local validation evidence.
+- Public-surface changes have matching docs/wiki updates when those systems are in use.
+
+## Logging hygiene
+
+- Keep logs minimal by default.
+- Avoid INFO-level logs for high-frequency health/internal polling paths.
+- When adding new health/check/poll endpoints, suppress noisy access logs or log at DEBUG with rate limiting/sampling.
+- Any change that can increase request log volume must include a quick flood check and an explicit rationale.
