@@ -37,7 +37,29 @@ If your project uses linked repositories, initialize them after setup with the c
 - **`agents/`** — shared AI agent rules, skills, and profiles
 - **`playbooks/`** — repeatable checklists for common tasks
 - **`handoffs/`** — durable cross-agent prompt/result threads
+- **`specs/`** — spec-driven development: problem, acceptance criteria, and
+  plan before code
+- **`prompts/`** — a versioned library of reusable, testable prompts
+- **`loops/`** — definitions for repeatable agent loops with explicit stop
+  conditions and hard bounds
 - **`scripts/`** — automation helpers (memory_add.sh, memory_compact.sh)
+
+## Engineering Disciplines
+
+Beyond memory and coordination, this template gives downstream projects three
+working disciplines for AI-assisted development:
+
+- **Prompt engineering** — prompts are versioned artifacts in
+  `prompts/library/`, not throwaway chat text. See
+  `agents/rules/prompt-engineering.md`.
+- **Loop engineering** — repeatable agent loops (retry, plan-execute-verify,
+  self-correction, CI-fix) declare a goal, stop conditions, hard bounds, and
+  an escalation path in `loops/active/` before they run. See
+  `agents/rules/loop-engineering.md`.
+- **Spec-driven development** — non-trivial changes get a spec in
+  `specs/active/` with checkable acceptance criteria before implementation,
+  and tracked issues are generated from the spec's plan. See
+  `agents/rules/spec-driven-development.md`.
 
 ## Memory Layers
 
@@ -92,6 +114,17 @@ The template includes shared rules for:
 │   ├── inbox/                         #   Raw entries
 │   ├── compactions/                   #   Periodic summaries
 │   └── archive/                       #   Processed entries
+├── specs/                             # Spec-driven development
+│   ├── active/                        #   Specs being drafted or implemented
+│   ├── archive/                       #   Shipped/closed specs
+│   └── templates/                     #   spec.md scaffold
+├── prompts/                           # Versioned prompt library
+│   ├── library/                       #   One file per prompt
+│   └── templates/                     #   prompt.md scaffold
+├── loops/                             # Agent loop definitions
+│   ├── active/                        #   Running/paused loops
+│   ├── archive/                       #   Closed loops with recorded outcome
+│   └── templates/                     #   loop.md scaffold
 ├── sync/                              # Cross-repo change notes
 ├── playbooks/                         # Operational checklists
 ├── scripts/                           # Memory and automation helpers
@@ -100,12 +133,18 @@ The template includes shared rules for:
 
 ## Day-to-Day Workflow
 
-1. **Work in the project source** — keep product code out of the template repo unless you intentionally fork it into a working project
-2. **Open PRs where your source lives** — whether that is this repo, a monorepo, or linked repositories
-3. **Record coordination changes** — capture what changed across repos or project areas
-4. **Add memory entries** — record decisions and outcomes
-5. **Compact periodically** — keep active memory small
-6. **Keep external memory in sync** — update linked issues/tickets/wiki pages when state changes
+1. **Spec non-trivial work first** — `/spec-new`, resolve Open Questions,
+   then `/spec-to-tasks` to generate tracked issues
+2. **Work in the project source** — keep product code out of the template repo unless you intentionally fork it into a working project
+3. **Open PRs where your source lives** — whether that is this repo, a monorepo, or linked repositories
+4. **Record coordination changes** — capture what changed across repos or project areas
+5. **Add memory entries** — record decisions and outcomes
+6. **Compact periodically** — keep active memory small
+7. **Keep external memory in sync** — update linked issues/tickets/wiki pages when state changes
+8. **Use loops for repeatable automation** — `/loop-new` with explicit stop
+   conditions instead of ad hoc unbounded retries
+9. **Version prompts, don't rewrite them silently** — `/prompt-new` /
+   `/prompt-iterate` for anything reused across sessions
 
 ## Cross-Agent Handoff Workflow
 
@@ -134,6 +173,9 @@ See `handoffs/README.md` and `agents/rules/handoffs.md` if you use handoffs.
 - `memory(curate): <scope>` — manual current.md refresh
 - `chore(sync): bump <repo> to <sha>` — linked-repo pointer update
 - `docs(agents): <description>` — agent infrastructure changes
+- `spec(new): <slug>` / `spec(tasks): <slug>` — spec opened / converted to tasks
+- `prompt(add): <name>` / `prompt(iterate): <name> vN` — prompt added / revised
+- `loop(open): <slug>` / `loop(close): <slug>` — loop opened / closed
 
 ## Extended Memory Storage (Jira, GitHub, Confluence)
 

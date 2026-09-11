@@ -34,3 +34,18 @@ Code edits, refactors, test-driven changes, repo navigation, PR branch preparati
 - `handoff-result` — scaffold a cross-agent handoff result
 - `issue-open` — open a tracked issue for long-running work
 - `issue-close` — close a tracked issue with landing citations
+- `spec-new` — open a new spec for spec-driven development
+- `spec-to-tasks` — convert an approved spec's plan into tracked issues
+- `prompt-new` — create a new versioned prompt
+- `prompt-iterate` — revise a prompt (version bump + changelog + eval note)
+- `loop-new` — open a new agent loop with stop conditions and hard bounds
+- `loop-close` — record a loop's outcome and archive it
+
+## Loop engineering for code work
+
+Retry loops, test-fix loops, and CI-fix loops are common in this role. Before
+running one, scaffold it with `loop-new` so it has a checkable goal and hard
+iteration/time bounds instead of running unbounded — see
+`agents/rules/loop-engineering.md`. When a spec exists for the change (see
+`spec-driven-development.md`), the loop's Goal should cite the spec's
+Acceptance Criteria it is trying to satisfy.

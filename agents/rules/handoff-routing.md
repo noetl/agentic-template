@@ -30,9 +30,20 @@ delegate Rust code changes" or "use a specific agent for design review only."
 Put those overrides in this file when the template is specialized, and keep
 them explicit enough that a future agent knows when they fire.
 
+## Loops vs. handoffs
+
+Mechanical repetition toward a checkable goal by one agent, resumable from
+recorded state, is a loop — see [`loop-engineering.md`](loop-engineering.md)
+and open one with `loop-new` instead of a handoff. Escalate a loop into a
+handoff when it hits its hard bounds without success, or its next step needs
+a different agent, tool, or an explicit human gate that the loop definition
+did not already carry.
+
 ## Coordination with other rules
 
 - [`handoffs.md`](handoffs.md) defines prompt/result structure.
+- [`loop-engineering.md`](loop-engineering.md) defines when repetition stays
+  a loop instead of becoming a handoff.
 - [`commit-conventions.md`](commit-conventions.md) defines handoff commit
   subjects.
 - [`issue-tracking.md`](issue-tracking.md) applies when the task will outlive

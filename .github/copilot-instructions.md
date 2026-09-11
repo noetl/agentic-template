@@ -27,6 +27,9 @@ Read and follow all files in `agents/rules/`, especially:
 - Roadmap boards (`roadmap-boards.md`) when your project uses boards
 - Wiki maintenance (`wiki-maintenance.md`) when your project uses wiki/docs memory
 - Writing style (`writing-style.md`)
+- Spec-driven development (`spec-driven-development.md`) for non-trivial changes
+- Loop engineering (`loop-engineering.md`) for repeatable agent loops
+- Prompt engineering (`prompt-engineering.md`) for reusable/versioned prompts
 
 ## Skills
 
@@ -40,6 +43,12 @@ Read the `SKILL.md` in each directory under `agents/skills/`:
 - `agents/skills/handoff-result/`
 - `agents/skills/issue-open/`
 - `agents/skills/issue-close/`
+- `agents/skills/spec-new/`
+- `agents/skills/spec-to-tasks/`
+- `agents/skills/prompt-new/`
+- `agents/skills/prompt-iterate/`
+- `agents/skills/loop-new/`
+- `agents/skills/loop-close/`
 
 ## Key commands
 

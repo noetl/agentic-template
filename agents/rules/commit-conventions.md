@@ -11,6 +11,12 @@ Use these prefixes for commits:
 - `handoff(prompt): <slug> round NN` — follow-up prompt
 - `handoff(result): <slug> round NN` — result written by executor
 - `handoff(close): <slug>` — archive completed handoff thread
+- `spec(new): <slug>` — new spec opened under `specs/active/`
+- `spec(tasks): <slug>` — spec's plan converted into tracked issues
+- `prompt(add): <name>` — new prompt added to the library
+- `prompt(iterate): <name> vN` — prompt revised (version bump)
+- `loop(open): <slug>` — new loop definition opened under `loops/active/`
+- `loop(close): <slug>` — loop outcome recorded and archived
 
 ## Issue references in commits
 

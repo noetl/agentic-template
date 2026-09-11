@@ -9,6 +9,10 @@ In-session task lists are ephemeral. Durable tracking must live in external syst
 1. Umbrella issue/ticket
 	- GitHub issue in the coordination repository and/or a Jira epic/story
 	- Captures goal, acceptance criteria, blockers, and cross-repo scope
+	- For non-trivial work, this is a spec's plan converted via
+	  `spec-to-tasks` (see [`spec-driven-development.md`](spec-driven-development.md)),
+	  not a freehand issue — the spec is the umbrella's acceptance-criteria
+	  source of truth.
 2. Submodule round issues
 	- Per-submodule issue/ticket for concrete implementation rounds
 	- Closed by merged PRs in the owning repository
@@ -18,6 +22,9 @@ In-session task lists are ephemeral. Durable tracking must live in external syst
 - Work needs follow-up in a later session.
 - Work is blocked on external action or human decision.
 - Multiple agents may touch the same task.
+- A spec's `## Plan / Task Breakdown` item is ready to implement — use
+  `spec-to-tasks` rather than opening issues by hand so the `## Pointers`
+  section cites the spec.
 
 When in doubt, open one. The overhead is low and it prevents task loss.
 

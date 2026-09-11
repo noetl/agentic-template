@@ -19,6 +19,12 @@ skills:
   - handoff-result
   - issue-open
   - issue-close
+  - spec-new
+  - spec-to-tasks
+  - prompt-new
+  - prompt-iterate
+  - loop-new
+  - loop-close
 ---
 
 @agents/profiles/claude.md

@@ -27,3 +27,9 @@ Deep codebase analysis, multi-file coordination, documentation, sync notes, memo
 - `handoff-result` — scaffold a cross-agent handoff result
 - `issue-open` — open a tracked issue for long-running work
 - `issue-close` — close a tracked issue with landing citations
+- `spec-new` — open a new spec for spec-driven development
+- `spec-to-tasks` — convert an approved spec's plan into tracked issues
+- `prompt-new` — create a new versioned prompt
+- `prompt-iterate` — revise a prompt (version bump + changelog + eval note)
+- `loop-new` — open a new agent loop with stop conditions and hard bounds
+- `loop-close` — record a loop's outcome and archive it

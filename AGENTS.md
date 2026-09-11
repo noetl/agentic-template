@@ -12,6 +12,22 @@ This file defines mandatory behavior for AI agents operating in this repository.
 - Keep shared instructions, skills, and rules consistent.
 - Maintain reproducible references for linked repos, releases, or other external dependencies.
 
+## Engineering disciplines this template supports
+
+Beyond coordination and memory, agents operating here should default to
+three working disciplines rather than ad hoc chat-only habits:
+
+- **Spec-driven development**: non-trivial or cross-repo changes get a spec
+  in `specs/active/` (checkable acceptance criteria, resolved open
+  questions) before implementation. See
+  `agents/rules/spec-driven-development.md`.
+- **Loop engineering**: repeatable agent loops declare a goal, stop
+  conditions, hard bounds, and an escalation path in `loops/active/` before
+  running. See `agents/rules/loop-engineering.md`.
+- **Prompt engineering**: reusable prompts are versioned artifacts in
+  `prompts/library/` with eval notes and an append-only changelog, not
+  silently edited chat text. See `agents/rules/prompt-engineering.md`.
+
 ## Foundational execution model — read first
 
 Before designing any feature, integration, deployment change, or operational
@@ -37,6 +53,12 @@ state without replay semantics, reshape the proposal before implementation.
    - linked-repo pointer updates or deterministic source references
    - AI memory entries and compactions
    - cross-agent handoff threads (`handoffs/active/`, `handoffs/archive/`)
+   - specs (`specs/active/`, `specs/archive/`) — problem, acceptance
+     criteria, and plan; not implementation code
+   - versioned prompts (`prompts/library/`) — prompt text, eval notes,
+     changelogs; never secrets
+   - loop definitions (`loops/active/`, `loops/archive/`) — goal, stop
+     conditions, iteration checkpoints, outcomes
 4. Keep memory updates append-only through Git history.
 5. Keep pointer updates minimal and deterministic.
 6. Never rewrite history on `main`.
@@ -73,6 +95,9 @@ state without replay semantics, reshape the proposal before implementation.
 - `handoff(prompt): <slug> round NN` — follow-up handoff prompt
 - `handoff(result): <slug> round NN` — publish handoff result
 - `handoff(close): <slug>` — archive completed thread
+- `spec(new): <slug>` — open spec, `spec(tasks): <slug>` — spec → tracked issues
+- `prompt(add): <name>` — new prompt, `prompt(iterate): <name> vN` — prompt revision
+- `loop(open): <slug>` — open loop, `loop(close): <slug>` — loop outcome recorded
 
 ## Memory workflow
 
