@@ -64,3 +64,12 @@ If your org uses GitHub Projects or Jira boards, status must reflect issue/ticke
 
 - Never include secrets or sensitive values.
 - Avoid duplicate issues; search open issues before creating a new one.
+
+## When not to open an issue
+
+For small, self-contained work that will finish this session, use the
+default checklist in [`definition-of-done.md`](definition-of-done.md)
+instead of tracker overhead. Open an issue when durability — not scope —
+is the concern; open a spec (see
+[`spec-driven-development.md`](spec-driven-development.md)) when scope,
+not durability, is the concern.

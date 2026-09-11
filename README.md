@@ -42,11 +42,13 @@ If your project uses linked repositories, initialize them after setup with the c
 - **`prompts/`** — a versioned library of reusable, testable prompts
 - **`loops/`** — definitions for repeatable agent loops with explicit stop
   conditions and hard bounds
+- **`evals/`** — regression scenarios protecting shared rule/skill/profile
+  behavior
 - **`scripts/`** — automation helpers (memory_add.sh, memory_compact.sh)
 
 ## Engineering Disciplines
 
-Beyond memory and coordination, this template gives downstream projects three
+Beyond memory and coordination, this template gives downstream projects
 working disciplines for AI-assisted development:
 
 - **Prompt engineering** — prompts are versioned artifacts in
@@ -60,6 +62,21 @@ working disciplines for AI-assisted development:
   `specs/active/` with checkable acceptance criteria before implementation,
   and tracked issues are generated from the spec's plan. See
   `agents/rules/spec-driven-development.md`.
+- **Context engineering** — memory, specs, prompts, loops, and handoffs all
+  compete for the same context window; a defined load order and a
+  pointers-over-reproduction default keep that budget sane. See
+  `agents/rules/context-engineering.md`.
+- **Agent regression testing** — changes to shared rules/skills/profiles get
+  a scenario in `evals/scenarios/` with an append-only pass/fail run log,
+  the same discipline a test suite gives code. See
+  `agents/rules/agent-regression-testing.md`.
+- **Tool and MCP governance** — new tools/MCP servers get a registry entry
+  (scope, risk tier, owner) before any agent profile references them. See
+  `agents/rules/tool-governance.md`.
+- **Definition of Done (default, lightweight)** — small, same-session work
+  gets a default completion checklist instead of full spec/issue overhead,
+  with explicit escalation rules for when it outgrows that checklist. See
+  `agents/rules/definition-of-done.md`.
 
 ## Memory Layers
 
@@ -125,6 +142,9 @@ The template includes shared rules for:
 │   ├── active/                        #   Running/paused loops
 │   ├── archive/                       #   Closed loops with recorded outcome
 │   └── templates/                     #   loop.md scaffold
+├── evals/                             # Agent regression scenarios
+│   ├── scenarios/                     #   Protected behaviors + run logs
+│   └── templates/                     #   scenario.md scaffold
 ├── sync/                              # Cross-repo change notes
 ├── playbooks/                         # Operational checklists
 ├── scripts/                           # Memory and automation helpers
@@ -145,6 +165,11 @@ The template includes shared rules for:
    conditions instead of ad hoc unbounded retries
 9. **Version prompts, don't rewrite them silently** — `/prompt-new` /
    `/prompt-iterate` for anything reused across sessions
+10. **Default to the lightweight checklist** in
+    `agents/rules/definition-of-done.md` for small, same-session work;
+    escalate to a spec or issue only when its own rules say to
+11. **Protect shared agent behavior** — `/eval-new` before, `/eval-record`
+    after, any change to a rule/skill/profile other agents depend on
 
 ## Cross-Agent Handoff Workflow
 
@@ -176,6 +201,7 @@ See `handoffs/README.md` and `agents/rules/handoffs.md` if you use handoffs.
 - `spec(new): <slug>` / `spec(tasks): <slug>` — spec opened / converted to tasks
 - `prompt(add): <name>` / `prompt(iterate): <name> vN` — prompt added / revised
 - `loop(open): <slug>` / `loop(close): <slug>` — loop opened / closed
+- `eval(new): <slug>` / `eval(record): <slug>` — scenario added / run recorded
 
 ## Extended Memory Storage (Jira, GitHub, Confluence)
 

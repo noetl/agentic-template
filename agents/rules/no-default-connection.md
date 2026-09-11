@@ -70,3 +70,5 @@ defaults, hardcoded DSNs, or ambient connection pools.
   goes through the owning service API.
 - [`deployment-validation.md`](deployment-validation.md) catches missing
   credential aliases during local validation.
+- [`tool-governance.md`](tool-governance.md) requires a registry entry
+  before any `credentialed`-tier tool is added to an agent profile at all.

@@ -24,6 +24,8 @@ skills:
   - prompt-iterate
   - loop-new
   - loop-close
+  - eval-new
+  - eval-record
 ---
 
 @agents/profiles/codex.md

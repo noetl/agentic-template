@@ -17,6 +17,8 @@ Use these prefixes for commits:
 - `prompt(iterate): <name> vN` — prompt revised (version bump)
 - `loop(open): <slug>` — new loop definition opened under `loops/active/`
 - `loop(close): <slug>` — loop outcome recorded and archived
+- `eval(new): <slug>` — new regression scenario added under `evals/scenarios/`
+- `eval(record): <slug>` — scenario run outcome appended
 
 ## Issue references in commits
 

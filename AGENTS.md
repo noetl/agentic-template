@@ -27,6 +27,19 @@ three working disciplines rather than ad hoc chat-only habits:
 - **Prompt engineering**: reusable prompts are versioned artifacts in
   `prompts/library/` with eval notes and an append-only changelog, not
   silently edited chat text. See `agents/rules/prompt-engineering.md`.
+- **Context engineering**: memory, specs, prompts, loops, and handoffs
+  compete for the same context window; load only what the current task
+  needs, in the order `agents/rules/context-engineering.md` defines.
+- **Agent regression testing**: changes to shared rules/skills/profiles
+  get a scenario in `evals/scenarios/` with a pass/fail run log before
+  they're treated as done. See `agents/rules/agent-regression-testing.md`.
+- **Tool and MCP governance**: a new tool or MCP server needs a registry
+  entry (scope, risk tier, owner) before any agent profile references it.
+  See `agents/rules/tool-governance.md`.
+- **Definition of Done (default, lightweight)**: small, same-session work
+  uses the default checklist in `agents/rules/definition-of-done.md`
+  rather than full spec/issue overhead, with explicit rules for when to
+  escalate.
 
 ## Foundational execution model — read first
 
@@ -59,6 +72,8 @@ state without replay semantics, reshape the proposal before implementation.
      changelogs; never secrets
    - loop definitions (`loops/active/`, `loops/archive/`) — goal, stop
      conditions, iteration checkpoints, outcomes
+   - regression scenarios (`evals/scenarios/`) — protected behaviors and
+     their append-only run logs
 4. Keep memory updates append-only through Git history.
 5. Keep pointer updates minimal and deterministic.
 6. Never rewrite history on `main`.
@@ -98,6 +113,7 @@ state without replay semantics, reshape the proposal before implementation.
 - `spec(new): <slug>` — open spec, `spec(tasks): <slug>` — spec → tracked issues
 - `prompt(add): <name>` — new prompt, `prompt(iterate): <name> vN` — prompt revision
 - `loop(open): <slug>` — open loop, `loop(close): <slug>` — loop outcome recorded
+- `eval(new): <slug>` — new scenario, `eval(record): <slug>` — run outcome appended
 
 ## Memory workflow
 

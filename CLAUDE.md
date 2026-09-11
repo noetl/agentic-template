@@ -34,6 +34,7 @@ memory/                          # Git-tracked shared memory
 specs/                           # spec-driven development (active/, archive/, templates/)
 prompts/                         # versioned prompt library (library/, templates/)
 loops/                           # agent loop definitions (active/, archive/, templates/)
+evals/                           # agent regression scenarios (scenarios/, templates/)
 playbooks/                       # operational runbooks
 scripts/                         # memory_add.sh, memory_compact.sh
 sync/                            # cross-repo coordination notes
@@ -56,6 +57,8 @@ repos/                           # linked repositories or source trees
 - `/prompt-iterate <name>` — revise a prompt (version bump + changelog + eval note)
 - `/loop-new <slug> "<goal>"` — open a new agent loop with stop conditions
 - `/loop-close <slug>` — record a loop's outcome and archive it
+- `/eval-new <slug> "<behavior>"` — add a regression scenario for a rule/skill/profile
+- `/eval-record <slug>` — log a scenario run's pass/fail outcome
 
 ## Daily operating checks
 
@@ -91,3 +94,4 @@ Before pointer bumps:
 - `spec(new): <slug>` / `spec(tasks): <slug>`
 - `prompt(add): <name>` / `prompt(iterate): <name> vN`
 - `loop(open): <slug>` / `loop(close): <slug>`
+- `eval(new): <slug>` / `eval(record): <slug>`

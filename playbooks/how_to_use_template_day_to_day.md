@@ -111,3 +111,8 @@ git push
 - Commit only instructions, playbooks, sync notes, memory, and coordination references.
 - Keep changes atomic: one coordination concern per commit when possible.
 - Keep local memory, issues/tickets, and docs pages synchronized for substantive changes.
+- Run the default checklist in `agents/rules/definition-of-done.md` before
+  calling small, same-session work done; escalate to a spec or issue only
+  when the checklist itself says to.
+- Before changing a shared rule/skill/profile under `agents/`, follow
+  `playbooks/agent_regression_testing.md`.

@@ -30,6 +30,10 @@ Read and follow all files in `agents/rules/`, especially:
 - Spec-driven development (`spec-driven-development.md`) for non-trivial changes
 - Loop engineering (`loop-engineering.md`) for repeatable agent loops
 - Prompt engineering (`prompt-engineering.md`) for reusable/versioned prompts
+- Context engineering (`context-engineering.md`) for what belongs in an agent's context
+- Agent regression testing (`agent-regression-testing.md`) before changing shared behavior
+- Tool and MCP governance (`tool-governance.md`) before adding a new tool to a profile
+- Definition of Done (`definition-of-done.md`) for small, same-session work
 
 ## Skills
 
@@ -49,6 +53,8 @@ Read the `SKILL.md` in each directory under `agents/skills/`:
 - `agents/skills/prompt-iterate/`
 - `agents/skills/loop-new/`
 - `agents/skills/loop-close/`
+- `agents/skills/eval-new/`
+- `agents/skills/eval-record/`
 
 ## Key commands
 

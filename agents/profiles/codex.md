@@ -40,6 +40,8 @@ Code edits, refactors, test-driven changes, repo navigation, PR branch preparati
 - `prompt-iterate` — revise a prompt (version bump + changelog + eval note)
 - `loop-new` — open a new agent loop with stop conditions and hard bounds
 - `loop-close` — record a loop's outcome and archive it
+- `eval-new` — add a regression scenario for a rule/skill/profile
+- `eval-record` — log a scenario run's pass/fail outcome
 
 ## Loop engineering for code work
 

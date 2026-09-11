@@ -27,6 +27,7 @@ memory/                          # Git-tracked shared memory
 specs/                           # spec-driven development (active/, archive/, templates/)
 prompts/                         # versioned prompt library (library/, templates/)
 loops/                           # agent loop definitions (active/, archive/, templates/)
+evals/                           # agent regression scenarios (scenarios/, templates/)
 playbooks/                       # operational runbooks
 scripts/                         # memory_add.sh, memory_compact.sh
 sync/                            # cross-repo coordination notes
@@ -49,6 +50,8 @@ repos/                           # linked repositories or source trees
 - `prompt-iterate` — revise a prompt (version bump + changelog + eval note)
 - `loop-new` — open a new agent loop with stop conditions and hard bounds
 - `loop-close` — record a loop's outcome and archive it
+- `eval-new` — add a regression scenario for a rule/skill/profile
+- `eval-record` — log a scenario run's pass/fail outcome
 
 ## Mandatory workflow
 
@@ -61,4 +64,8 @@ repos/                           # linked repositories or source trees
    implementation; see `agents/rules/spec-driven-development.md`.
 7. For repeatable agent loops, declare stop conditions and hard bounds
    (`loop-new`) before running iterations; see `agents/rules/loop-engineering.md`.
-8. Follow all rules in `AGENTS.md` and `agents/rules/*.md`.
+8. For small, same-session work, use the default checklist in
+   `agents/rules/definition-of-done.md` rather than opening a spec or issue.
+9. Before changing a shared rule/skill/profile, add or update a scenario
+   in `evals/scenarios/`; see `agents/rules/agent-regression-testing.md`.
+10. Follow all rules in `AGENTS.md` and `agents/rules/*.md`.
