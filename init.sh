@@ -150,6 +150,21 @@ if [[ ! "${setup_remote:-Y}" =~ ^[Nn] ]]; then
   echo "  To push: git push -u origin main"
 fi
 
+# ── Visibility reminder ──────────────────────────────────────
+# This template repo is public; a project instance created from it should
+# default to private (see agents/rules/safety.md). If the gh CLI is
+# available and a remote is set, check and warn rather than assume.
+if command -v gh >/dev/null 2>&1 && git remote get-url origin >/dev/null 2>&1; then
+  origin_slug="$(git remote get-url origin | sed -E 's#^.*[:/]([^/]+/[^/]+)(\.git)?$#\1#; s#\.git$##')"
+  visibility="$(gh repo view "$origin_slug" --json visibility --jq .visibility 2>/dev/null || true)"
+  if [ "$visibility" = "PUBLIC" ]; then
+    echo ""
+    echo "  ⚠ ${origin_slug} is PUBLIC. Project repos created from this template"
+    echo "    should default to private — confirm this is intentional, or fix it:"
+    echo "      gh repo edit ${origin_slug} --visibility private"
+  fi
+fi
+
 # ── Done ─────────────────────────────────────────────────────
 
 echo ""

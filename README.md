@@ -10,8 +10,16 @@ It also includes a file-based handoff protocol for teams that want durable hando
 
 Use this template, then run the included initializer once to replace all placeholders and set up the local workspace.
 
+This template repo is public. **A project repo created from it should default to
+private** unless there's a deliberate reason to make it public — set visibility at
+creation time, either via GitHub's "Use this template" button (choose "Private") or:
+
 ```bash
-# 1) Clone your new meta repository created from this template
+gh repo create <org>/<slug>-meta --template noetl/agentic-template --private --clone
+```
+
+```bash
+# 1) Or, if the repo already exists (created via "Use this template"), just clone it
 git clone {{REPO_PREFIX}}/{{PROJECT_SLUG}}-meta.git
 cd {{PROJECT_SLUG}}-meta
 

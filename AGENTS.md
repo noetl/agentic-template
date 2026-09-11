@@ -58,7 +58,9 @@ state without replay semantics, reshape the proposal before implementation.
 
 ## Hard rules
 
-1. This repository is public. Never store secrets or sensitive values.
+1. Never store secrets or sensitive values, regardless of whether this repository is
+   public or private. The upstream template is public; project repos created from it
+   should default to private — see `agents/rules/safety.md`.
 2. Keep product code in its owning source tree; this repo may own code only when intentionally used as an active project repo.
 3. Allowed content:
    - AI instruction files

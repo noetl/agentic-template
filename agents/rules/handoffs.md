@@ -80,8 +80,10 @@ contents, moved verbatim. Do not edit archived threads.
 
 ## Rules for both
 
-1. **Stay public-safe.** This repo is public. No credentials, no
-   tokens, no customer data, no secrets in either prompt or result.
+1. **Stay credential-safe regardless of repo visibility.** No credentials, no
+   tokens, no customer data, no secrets in either prompt or result — handoff
+   files are durable, widely-read artifacts whether the repo is public or
+   private.
 2. **Do not improvise around blockers.** If preconditions are not met,
    report and stop. The dispatcher writes the next round if a way
    forward is found.

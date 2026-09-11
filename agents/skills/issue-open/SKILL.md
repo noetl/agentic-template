@@ -53,4 +53,4 @@ If the work is a one-shot side task this session can finish now, do it inline.
 - Do not create new repo labels unless the user or project rules define them.
 - Do not auto-close someone else's issue from this skill.
 - Do not open an issue with missing required sections.
-- Never include secrets. This repo is public.
+- Never include secrets, regardless of repo visibility.

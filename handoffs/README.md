@@ -26,7 +26,7 @@ handoffs/
 1. One thread per topic (`<YYYY-MM-DD-short-topic>`).
 2. One round is one prompt + one result file.
 3. Never rewrite old rounds; append new rounds.
-4. Keep content public-safe (no secrets or credentials).
+4. Keep content secret-free regardless of repo visibility (no secrets or credentials).
 5. Commit prompt and result files as durable artifacts.
 
 ## Lifecycle
